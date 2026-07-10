@@ -43,10 +43,37 @@ function lang_switcher_html(): string {
     $current = current_lang();
     $en = $current === 'en' ? 'active' : '';
     $th = $current === 'th' ? 'active' : '';
-    return '<div class="lang-switch">'
+    return theme_toggle_html()
+        . '<div class="lang-switch">'
         . '<a href="' . e(lang_url('en')) . '" class="lang-btn ' . $en . '">EN</a>'
         . '<a href="' . e(lang_url('th')) . '" class="lang-btn ' . $th . '">TH</a>'
         . '</div>';
+}
+
+/**
+ * Dark/light theme toggle button (top-left). Dark is the default; the choice
+ * is stored in localStorage and applied by the inline <head> script before
+ * paint. The trailing script only syncs the icon to whatever theme is active.
+ */
+function theme_toggle_html(): string {
+    return '<button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">'
+        . '<i class="fa-solid fa-sun"></i>'
+        . '</button>'
+        . '<script>'
+        . 'function toggleTheme(){'
+        . 'var cur=document.documentElement.getAttribute("data-theme")==="light"?"light":"dark";'
+        . 'var next=cur==="light"?"dark":"light";'
+        . 'document.documentElement.setAttribute("data-theme",next);'
+        . 'try{localStorage.setItem("theme",next);}catch(e){}'
+        . 'syncThemeIcon();'
+        . '}'
+        . 'function syncThemeIcon(){'
+        . 'var t=document.documentElement.getAttribute("data-theme")==="light"?"light":"dark";'
+        . 'var i=document.querySelector(".theme-toggle i");'
+        . 'if(i){i.className=t==="light"?"fa-solid fa-moon":"fa-solid fa-sun";}'
+        . '}'
+        . 'syncThemeIcon();'
+        . '</script>';
 }
 
 $GLOBALS['__i18n'] = [
