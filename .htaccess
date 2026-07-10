@@ -1,0 +1,20 @@
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Pretty profile URLs: /u/username -> profile.php?u=username
+  RewriteRule ^u/([a-zA-Z0-9_-]+)/?$ profile.php?u=$1 [L,QSA]
+
+  # Block direct access to internal/config directories
+  RewriteRule ^config/ - [F,L]
+  RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+<FilesMatch "\.sql$">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "^config\.php$">
+  Require all denied
+</FilesMatch>

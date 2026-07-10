@@ -1,0 +1,22 @@
+# ===== Secrets / config =====
+# มีรหัสผ่านฐานข้อมูล — ห้าม commit เด็ดขาด
+config/config.php
+
+# ===== User uploads =====
+# รูปพื้นหลังที่ผู้ใช้อัปโหลด (เก็บ .gitkeep ไว้เพื่อคงโครงสร้างโฟลเดอร์)
+uploads/backgrounds/*
+!uploads/backgrounds/.gitkeep
+!uploads/backgrounds/.htaccess
+
+# ===== OS / editor =====
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.sublime-*
+
+# ===== Logs =====
+*.log
+error_log
