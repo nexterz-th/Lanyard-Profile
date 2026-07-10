@@ -10,7 +10,7 @@ $user = current_user();
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NEXTERZ Profile</title>
+  <title>Lanyard Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@ $user = current_user();
   <div class="wrap">
     <div class="card hero">
       <span class="badge"><i class="fa-solid fa-bolt"></i> <?= e(t('home.badge')) ?></span>
-      <h1 class="gradient-text">NEXTERZ Profile</h1>
+      <h1 class="gradient-text">Lanyard Profile</h1>
       <p class="muted"><?= e(t('home.desc')) ?></p>
       <div class="cta">
         <?php if ($user): ?>
