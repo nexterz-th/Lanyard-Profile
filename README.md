@@ -1,4 +1,4 @@
-# NEXTERZ Profile — ระบบหน้าโปรไฟล์ออนไลน์ + Discord Presence แบบเรียลไทม์
+# Lanyard Profile — ระบบหน้าโปรไฟล์ออนไลน์ + Discord Presence แบบเรียลไทม์
 
 ระบบสร้างหน้าโปรไฟล์ส่วนตัว (bio / link-in-bio) เขียนด้วย **PHP ล้วน + MySQL** ผู้ใช้สมัครสมาชิก ปรับแต่งโปรไฟล์ของตัวเอง แล้วแชร์ลิงก์สวย ๆ เช่น `https://example.com/u/username`
 
