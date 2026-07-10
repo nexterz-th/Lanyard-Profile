@@ -101,7 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($action === 'update_background_url') {
         $bgUrlInput = trim($_POST['background_url'] ?? '');
-        if (!filter_var($bgUrlInput, FILTER_VALIDATE_URL) || !preg_match('~^https?://~i', $bgUrlInput)) {
+        // Reject characters that can break out of a CSS url('...') context or are
+        // never valid in an image URL (quotes, backslash, angle brackets, whitespace).
+        if (!filter_var($bgUrlInput, FILTER_VALIDATE_URL) || !preg_match('~^https?://~i', $bgUrlInput) || preg_match('/[\'"\\\\<>\s]/', $bgUrlInput)) {
             $errors[] = t('dash.err_bg_url');
         } else {
             $oldFile = $user['background_image'] ?? null;
@@ -285,7 +287,7 @@ $bgUrl = $user['background_image']
     <div class="card">
       <h2><i class="fa-solid fa-image"></i> <?= e(t('dash.bg.title')) ?></h2>
       <?php if ($bgUrl): ?>
-        <div class="bg-preview" style="background-image:url('<?= e($bgUrl) ?>')"></div>
+        <div class="bg-preview" style="background-image:url('<?= e(safe_css_url($bgUrl)) ?>')"></div>
         <p class="muted"><?= e(t('dash.bg.source')) ?> <?= $user['background_image'] ? e(t('dash.bg.source_file')) : e(t('dash.bg.source_url')) ?></p>
       <?php else: ?>
         <p class="muted"><?= e(t('dash.bg.default')) ?></p>

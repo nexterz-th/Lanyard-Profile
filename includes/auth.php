@@ -5,9 +5,15 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/functions.php';
 
 if (session_status() === PHP_SESSION_NONE) {
+    // Send the session cookie with the Secure flag whenever the request is over
+    // HTTPS (directly or behind a proxy/Cloudflare), so it is never leaked over
+    // plain HTTP. Left off for local HTTP development.
+    $secure = (!empty($_SERVER['HTTPS']) && strtolower((string) $_SERVER['HTTPS']) !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
     session_set_cookie_params([
         'httponly' => true,
         'samesite' => 'Lax',
+        'secure'   => $secure,
     ]);
     session_start();
 }

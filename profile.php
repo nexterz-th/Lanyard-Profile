@@ -222,7 +222,7 @@ $jsI18nJson = json_encode($jsI18n, $jsonFlags);
   <?= lang_switcher_html() ?>
   <div id="loadingOverlay"><div class="loader"></div></div>
   <?php if ($bgUrl): ?>
-  <div class="bg-fixed" style="background-image:url('<?= e($bgUrl) ?>')"></div>
+  <div class="bg-fixed" style="background-image:url('<?= e(safe_css_url($bgUrl)) ?>')"></div>
   <?php endif; ?>
 
   <div class="container">

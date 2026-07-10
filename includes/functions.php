@@ -35,6 +35,19 @@ function is_valid_hex_color(string $color): bool {
     return (bool) preg_match('/^#[0-9a-fA-F]{6}$/', $color);
 }
 
+/**
+ * Neutralize a URL for safe embedding inside a CSS url('...') value in a style
+ * attribute. htmlspecialchars() alone is NOT enough there: the browser
+ * HTML-decodes the attribute before parsing CSS, so an encoded quote turns back
+ * into a real quote and can break out of the url() string (CSS injection).
+ * We percent-encode the CSS-breaking characters and strip whitespace/control
+ * bytes. This also protects URLs already saved in the database.
+ */
+function safe_css_url(string $url): string {
+    $url = str_replace(['\\', "'", '"'], ['%5C', '%27', '%22'], $url);
+    return preg_replace('/[\x00-\x20\x7f]/', '', $url) ?? '';
+}
+
 // 'prefix' matters because Font Awesome's brand logos (fab) and general solid icons (fa-solid)
 // are separate icon sets — using the wrong one renders a blank/missing glyph.
 const SOCIAL_PLATFORMS = [
