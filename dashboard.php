@@ -185,6 +185,7 @@ $bgUrl = $user['background_image']
   <link rel="stylesheet" href="/assets/css/theme.css?v=5" />
 </head>
 <body>
+  <?= theme_toggle_html() ?>
   <?= lang_switcher_html() ?>
   <div class="bg-blobs"><span></span><span></span><span></span></div>
   <div class="top-nav">

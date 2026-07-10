@@ -32,6 +32,7 @@ $user = current_user();
   </style>
 </head>
 <body>
+  <?= theme_toggle_html() ?>
   <?= lang_switcher_html() ?>
   <div class="bg-blobs"><span></span><span></span><span></span></div>
   <div class="wrap">

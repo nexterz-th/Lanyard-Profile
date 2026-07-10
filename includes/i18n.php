@@ -43,8 +43,7 @@ function lang_switcher_html(): string {
     $current = current_lang();
     $en = $current === 'en' ? 'active' : '';
     $th = $current === 'th' ? 'active' : '';
-    return theme_toggle_html()
-        . '<div class="lang-switch">'
+    return '<div class="lang-switch">'
         . '<a href="' . e(lang_url('en')) . '" class="lang-btn ' . $en . '">EN</a>'
         . '<a href="' . e(lang_url('th')) . '" class="lang-btn ' . $th . '">TH</a>'
         . '</div>';
