@@ -358,3 +358,20 @@ select option { background: var(--bg); color: var(--text); }
   color: #fff;
 }
 .lang-switch .lang-btn:hover:not(.active) { color: var(--text); }
+
+/* Site footer */
+.site-footer {
+  text-align: center;
+  padding: 28px 16px 32px;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.site-footer a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-footer a:hover { text-decoration: underline; }
+.site-footer .footer-heart { color: #e0245e; }

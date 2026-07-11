@@ -178,20 +178,20 @@ $bgUrl = $user['background_image']
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dashboard | NEXTERZ Profile</title>
+  <title>Dashboard | Lanyard Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <script>(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
-  <link rel="stylesheet" href="/assets/css/theme.css?v=5" />
+  <link rel="stylesheet" href="/assets/css/theme.css?v=6" />
 </head>
 <body>
   <?= theme_toggle_html() ?>
   <?= lang_switcher_html() ?>
   <div class="bg-blobs"><span></span><span></span><span></span></div>
   <div class="top-nav">
-    <a href="/index.php" class="brand">NEXTERZ Profile</a>
+    <a href="/index.php" class="brand">Lanyard Profile</a>
     <div class="links">
       <span class="muted"><?= e(t('dash.hello', ['name' => $user['username']])) ?></span>
       <a href="<?= e($profileUrl) ?>" target="_blank"><?= e(t('dash.view_profile')) ?></a>
@@ -367,5 +367,9 @@ $bgUrl = $user['background_image']
       <?php endif; ?>
     </div>
   </div>
+
+  <footer class="site-footer">
+    Made With <span class="footer-heart">♥</span> <a href="https://nexterz.com" target="_blank" rel="noopener">NEXTERZ</a>
+  </footer>
 </body>
 </html>
